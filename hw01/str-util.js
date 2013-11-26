@@ -44,6 +44,28 @@
  * @return {String} Строка с повотрениями.
  */
 
+function repeat(str, count, sep) {
+	var finishStr;
+    if(count == 0) {
+        return '';
+    }
+    finishStr = str;
+
+    var i;
+	if (sep == null) {
+		for ( i = 1; i < count; i++) {
+			finishStr = finishStr + str;
+	}
+	}	
+	else {
+		for ( i = 1; i < count; i++) {
+			finishStr = finishStr + sep +str;
+		}
+	}
+//    document.writeln(finishStr);
+	return finishStr;
+}
+
 /**
  * Задание 3. Создать функцию toGetParams, формирующую из
  * объекта строку параметров для GET-запроса.
@@ -56,6 +78,19 @@
  *
  * @return {String} строка параметров.
  */
+
+    function toGetParams(obj) {
+    var str = '';
+    var count = Object.keys(obj).length;
+    for(var key in obj) {
+        count--;
+        str+= key + '=' + obj[key];
+        if (count != 0) {
+            str+= '&';
+        }
+    }
+    return str;
+}
 
 /**
  * Задание 4. Создать функцию formatUrl, формирующую из базового url и объекта
@@ -73,6 +108,9 @@
  * @return {String} сформированный url.
  */
 
+    function formatUrl(url, obj) {
+    return url + '?' + toGetParams(obj);
+}
 /**
  * Задание 5. Создать функцию startsWith, возвращающая true, если строка, переданная
  * в качестве первого аргумента начинается со строки, переданной в качестве второго аргумента,
@@ -91,6 +129,22 @@
  * @return {Boolean} Результат проверки.
  */
 
+    function  startsWith(str, prefix) {
+        var i;
+
+        if (prefix == '') {
+
+            return true;
+        }
+
+        for (i = 0; i < prefix.length; i++) {
+            if(str.charAt(i) != prefix.charAt(i)) {
+                return false;
+            }
+        }
+    return true;
+}
+
 /**
  * Задание 6. Создать функцию endsWith, возвращающая true, если строка, переданная
  * в качестве первого аргумента оканчивается на строку, переданную в качестве второго аргумента,
@@ -108,3 +162,21 @@
  *
  * @return {Boolean} Результат проверки.
  */
+
+ function endsWith(str, suffix) {
+
+    var i;
+    var difference = Math.abs(str.length - suffix.length);
+
+    if (suffix == '') {
+        return true;
+    }
+
+    for (i = str.length - 1; i >= str.length - difference; i--) {
+        if(str.charAt(i) != suffix.charAt(i - difference)) {
+            return false;
+        }
+    }
+
+ 	return true;
+ }
