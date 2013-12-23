@@ -24,7 +24,34 @@
  *
  * @return {String} отформатированная строка.
  */
+function format(sLine, sValues) {
+    var line = "",
+        tokens = new arr(arguments.length),
+        index = 0, tokenCnt = 0,
+        len = 0, i = 0;
+// chek input
+    line = (typeof(sLine) === "string") && sLine;
+    if (!line) {
+        throw new Error("Uncorrect input");
+    }
+// Find tokenCnt. Split helps to find the number of occur of a regexp
+    tokenCnt = line.split(/[{]\s*\d+\s*[}]/).length - 1;
+    if (tokenCnt === 0) {
+        return line;
+    }
+    if (tokenCnt !== arguments.length-1) {
+        throw new Error("Invalid arguments count");
+    }
+    for (i = 1, len = arguments.length; i < len; i++) {
+        tokens = /[{]\s*\d+\s*[}]/.exec(line);
+        if (tokens) {
+            index = tokens[0].replace(/[{}]/g, "");
+            line = line.replace(tokens[0], arguments[+index+1]);
+        }
+    };
 
+    return line;
+}
 /**
  * Задание 2. Создать функцию repeat.
  *
