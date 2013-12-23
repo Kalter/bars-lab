@@ -1,0 +1,52 @@
+h1 {
+    text-size: 55px;
+    text-decoration: underline;
+    letter-spacing: 2pt;
+    font-size: 40pt;
+    font-family: groening;
+
+}
+a {
+    font-family: groening;
+}
+img.student{
+            width: 180pt;
+            height: 250pt;
+}
+ #name {
+     font-size: 27pt;
+ }
+ .text_with_indent {
+     text-indent: 20pt;
+ }
+.icon {
+      width: 20pt;
+    height: 20pt;
+}
+
+.left_table {
+    display: block;
+    float: left;
+}
+
+.right_table {
+
+    display: block;
+
+}
+.clear{
+    clear:both;
+}
+
+.data {
+    display: inline;
+}
+@font-face {
+
+    font-family: groening; /* имя шрифта для CSS правил */
+
+    src: local("Groening"), /* проверяем наличие шрифта в ОС пользователя */
+
+    url(D:\JavaProjects\groening.ttf); /* если шрифт не установлен, тогда загружаем его по указанному пути */
+
+}
