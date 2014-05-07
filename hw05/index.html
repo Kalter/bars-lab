@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8"/>
+    <title>fastShop</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link href="style.css" rel="stylesheet">
+    <script src="src/js/angular.js"></script>
+    <script src="src/js/Controller.js"></script>
+</head>
+
+<body ng-app>
+<div class="wrapper">
+    <header class="header">
+        <div class="logo">
+            <span class="first">fast</span><span class="second">Shop</span>
+        </div>
+    </header>
+    <!-- .header-->
+    <div class="middle" ng-controller="GoodsListCtrl">
+        <div class="container">
+            <main class="content">
+                <ul class="items">
+                    <li ng-mousedown="start(this)" ng-mousemove="move(this)" ng-mouseup="end(this)" ng-repeat="d in data">
+                        <div ng-dblclick="add(this)" class="item">
+                            <img ng-src="{{d.src}}">
+                            <div class="item-name">{{ d.name }}</div>
+                            <div class="item-price">{{ d.name }}</div>
+                        </div>
+                    </li>
+                </ul>
+            </main>
+            <!-- .content -->
+        </div>
+        <!-- .container-->
+        <aside class="right-sidebar">
+            <div class="basket">
+                <ul class="basket-content">
+                    <li ng-repeat="good in data" ng-dblclick="delete(this)" ng-show="good.inBasket>0">
+                        <div class="basket-name"><span class="kol">{{ good.inBasket }}</span> {{ good.name }}
+                        </div>
+                        <div class="basket-price">{{good.price }}</div>
+                    </li>
+                </ul>
+            </div>
+            <p align="center">Общая сумма: {{ sum }} руб.</p>
+
+            <p align="center" ng-show="sum>0"><input type="button"
+                                                     onclick="alert('Сумма вашего заказа {{ sum }} руб.');"
+                                                     value="Купить"/></p>
+        </aside>
+        <!-- .right-sidebar -->
+    </div>
+    <!-- .middle-->
+</div>
+<!-- .wrapper -->
+</body>
+</html>
